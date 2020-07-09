@@ -14,7 +14,7 @@ import {
 } from "react-router-dom";
 
 import RootComponent from "./components/RootComponent";
-import Surveys from "./components/Surveys";
+import Survey from "./components/Survey";
 
 // Be sure to include styles at some point, probably during your bootstraping
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
@@ -69,23 +69,23 @@ export class App extends Component {
                     </NavIcon>
                     <NavText>Home</NavText>
                   </NavItem>
-                  <NavItem eventKey="surveys">
+                  <NavItem eventKey="survey">
                     <NavIcon>
                       <i
-                        className="fa fa-fw fa-user"
+                        className="fa fa-fw fa-list-alt"
                         style={{ fontSize: "1.75em" }}
                       />
                     </NavIcon>
                     <NavText>Surveys</NavText>
                   </NavItem>
-                  <NavItem eventKey="settings"> 
+                  <NavItem eventKey="answer"> 
                     <NavIcon>
                       <i
-                        className="fa fa-fw fa-cogs"
+                        className="fa fa-fw fa-mail-reply"
                         style={{ fontSize: "1.75em" }}
                       />
                     </NavIcon>
-                    <NavText>Settings</NavText>
+                    <NavText>Answers</NavText>
                   </NavItem>
                 </Nav>
               </SideNav>
@@ -103,11 +103,11 @@ export class App extends Component {
                     <RootComponent />
                   )}
                 />
-                <Route path="/surveys">
-                  <Surveys />
+                <Route path="/survey">
+                  <Survey />
                 </Route>
-                <Route path="/settings">
-                  <Settings />
+                <Route path="/answer">
+                  <Answer />
                 </Route>
               </main>
             </Fragment>
@@ -118,8 +118,8 @@ export class App extends Component {
   }
 }
 
-function Settings() {
-  return <h2 className="mt-3 title_head">Settings</h2>;
+function Answer() {
+  return <h2 className="mt-3 title_head">Answer</h2>;
 }
 
 export default App;

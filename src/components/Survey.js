@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Table from 'react-bootstrap/table';
 import Modal from "./Modal";
 
-class Surveys extends Component {
+class Survey extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -59,7 +59,7 @@ class Surveys extends Component {
         });
         return (
             <div className="container-fluid">
-                <h2 className="mt-3 title_head">Surveys</h2>
+                <h2 className="mt-3 title_head">Survey</h2>
                 <div className="row mt-5">
                     <div className="col">
                         <Table striped bordered hover size="sm" responsive="sm">
@@ -96,4 +96,4 @@ class Surveys extends Component {
     }
 }
 
-export default Surveys;
+export default Survey;

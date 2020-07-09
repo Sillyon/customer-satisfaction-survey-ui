@@ -20,7 +20,7 @@ class SurveyGraph extends Component {
             .then((data) => {
     
                 let requiredData = [
-                    ['Surveys', 'Count']
+                    ['Survey', 'Count']
                 ];
 
                 Object.keys(data).map(key => {
