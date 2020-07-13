@@ -1,9 +1,4 @@
 import React, { Component } from "react";
-import AgeGraph from "./graphs/AgeGraph";
-import SurveyGraph from "./graphs/SurveyGraph";
-import GenderGraph from "./graphs/GenderGraph";
-import SearchCountGraph from "./graphs/SearchCountGraph";
-import PincodeGraph from "./graphs/PincodeGraph";
 
 class RootComponent extends Component {
   constructor(props) {
@@ -28,19 +23,6 @@ class RootComponent extends Component {
         <div className="row">
           <h2 className="mt-3 title_head">Home</h2>
           {errors}
-        </div>
-        <div className="row">
-          <div className={"chart-container chart_sizes"}>
-            <AgeGraph />
-            <SurveyGraph />
-          </div>
-          <div className={"chart-container chart_sizes"}>
-            <GenderGraph />
-            <SearchCountGraph />
-          </div>
-          <div className={"chart-container chart_sizes"}>
-            <PincodeGraph />
-          </div>
         </div>
       </div>
     );

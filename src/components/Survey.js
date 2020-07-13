@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import Table from 'react-bootstrap/table';
 import Modal from "./Modal";
 
-class Survey extends Component {
+class Survey extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,9 +13,9 @@ class Survey extends Component {
         };
     }
 
-    togglePopup(surveyId) {
-        alert(surveyId);
-        let surveyQaData = this.state.tableData.filter(survey => survey.surveyId === surveyId);
+    togglePopup(topicId) {
+        alert(topicId);
+        let surveyQaData = this.state.tableData.filter(survey => survey.topicId === topicId);
         this.setState({
             showPopup: !this.state.showPopup,
             modalData: surveyQaData
@@ -24,7 +24,7 @@ class Survey extends Component {
 
     fetchData() {
         // Where we're fetching data from
-        fetch(process.env.REACT_APP_URL + `rest/chatbot/survey/getSurveyData`)
+        fetch(process.env.REACT_APP_URL + `list`)
             // We get the API response and receive data in JSON format...
             .then((response) => response.json())
             // ...then we update the users state
@@ -44,17 +44,12 @@ class Survey extends Component {
     }
 
     render() {
-
         let tableData = this.state.tableData.map((item, index) => {
             return (<tr key={index}>
-                <td>{item.surveyId}</td>
-                <td>{(item.name) ? item.name : "NA"}</td>
-                <td>{item.age}</td>
-                <td>{(item.email) ? item.email : "NA"}</td>
-                <td>{item.gender}</td>
-                <td>{(item.pincode) ? item.pincode : "000000"}</td>
-                <td>{(item.page) ? item.page : "NA"}</td>
-                <td><button className="btn btn-light" onClick={this.togglePopup(item.surveyId)}>View Details</button></td>
+                <td>{item.topicId}</td>
+                <td>{(item.topic) ? item.name : "NA"}</td>
+                <td>{item.npmScore}</td>
+                <td><button className="btn btn-light" onClick={this.togglePopup(item.topicId)}>View Details</button></td>
             </tr>);
         });
         return (
@@ -65,13 +60,9 @@ class Survey extends Component {
                         <Table striped bordered hover size="sm" responsive="sm">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Age</th>
-                                    <th>Email</th>
-                                    <th>Gender</th>
-                                    <th>Pincode</th>
-                                    <th>Page</th>
+                                    <th>TopicId</th>
+                                    <th>Topic</th>
+                                    <th>NPM Score</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
