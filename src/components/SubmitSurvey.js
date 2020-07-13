@@ -6,7 +6,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { GreenRadio, YellowRadio, RedRadio } from './RadioButtonColors';
 
 export default class MainView extends Component {
-  
+
   state = {
     score: null,
     feedback: null,
@@ -37,15 +37,22 @@ export default class MainView extends Component {
     }
     axios.post('/answer', body)
   }
+
   render() {
     return (
       <div align="center">
-        <h3>How likely are you to recommend Groove to a friend or colleague?</h3>
+        <h3>How likely are you to recommend XXX to a friend or colleague?</h3>
         <form>
           <FormGroup>
-            <Label for="selectBox">Choose Topic:</Label>
-            <Input type="select" name="select" id="selectBox" onSelect={this.onSelect}>
-            </Input>
+            <div class="row">
+              <div class=".col-sm-">
+                <Label for="selectBox">Choose Topic:</Label>
+              </div>
+              <div class="col">
+                <Input type="select" name="select" id="selectBox" onSelect={this.onSelect}>
+                </Input>
+              </div>
+            </div>
           </FormGroup>
           <FormGroup>
             <RadioGroup row onClick={this.onClick} >
@@ -61,8 +68,10 @@ export default class MainView extends Component {
               <FormControlLabel value="9" control={<GreenRadio />} label="9" />
               <FormControlLabel value="10" control={<GreenRadio />} label="10" />
             </RadioGroup>
-            <div align="left">Not at all likely</div>
-            <div align="right">Extremely likely</div>
+            <div class="row">
+              <div class="col" style={{ textAlign: 'left' }}>Not at all likely</div>
+              <div class="col" style={{ textAlign: 'right' }}>Extremely likely</div>
+            </div>
           </FormGroup>
           <FormGroup>
             <Label for="exampleText"><h3>What is the most important reason for your score?</h3></Label>

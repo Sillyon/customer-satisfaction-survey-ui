@@ -6,20 +6,20 @@ export default class ListAnswer extends Component {
     let items = [];
     for (let i = 0; i <= this.props.maxValue; i++) {
       items.push(<option key={i} value={i}>{i}</option>);
- /*     this.props.answers.map((answer) => (
-        <tr key={answer.submitId}>
-          <th scope="row">{answer.submitId}</th>
-          <td>{answer.score}</td>
-          <td>{answer.feedback}</td>
-          <td>{answer.survey.topicId}</td>
-        </tr>
-      ));
-      
-      options.map(option => 
-        <option key={option.id} value={option.value}>                                   
-        {option.value}
-        </option>)
-       );*/
+      /*     this.props.answers.map((answer) => (
+             <tr key={answer.submitId}>
+               <th scope="row">{answer.submitId}</th>
+               <td>{answer.score}</td>
+               <td>{answer.feedback}</td>
+               <td>{answer.survey.topicId}</td>
+             </tr>
+           ));
+           
+           options.map(option => 
+             <option key={option.id} value={option.value}>                                   
+             {option.value}
+             </option>)
+            );*/
       //here I will be creating my options dynamically based on
       //what props are currently passed to the parent component
     }
@@ -37,10 +37,16 @@ export default class ListAnswer extends Component {
         <h3>List Survey Answers</h3>
         <Form>
           <FormGroup>
-            <Label for="selectBox">Choose Topic: </Label>
-            <Input type="select" name="select" id="selectBox" onChange={this.onDropdownSelected}>
-              {this.createSelectItems()}
-            </Input>
+            <div class="row">
+              <div class=".col-sm-">
+                <Label for="selectBox">Choose Topic:</Label>
+              </div>
+              <div class="col">
+                <Input type="select" name="select" id="selectBox" onChange={this.onDropdownSelected}>
+                  {this.createSelectItems()}
+                </Input>
+              </div>
+            </div>
           </FormGroup>
           <Table>
             <thead>
