@@ -1,31 +1,37 @@
 import React, { Component, Fragment } from "react";
-
-import SideNav, {
-  Toggle,
-  Nav,
-  NavItem,
-  NavIcon,
-  NavText,
-} from "@trendmicro/react-sidenav";
-
-import {
-  BrowserRouter as Router,
-  Route
-} from "react-router-dom";
-
-import RootComponent from "./components/RootComponent";
-import Survey from "./components/Survey";
-
-// Be sure to include styles at some point, probably during your bootstraping
+import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText, } from "@trendmicro/react-sidenav";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import "./App.css";
+import ListAnswer from "./components/ListAnswer";
+import ListSurvey from "./components/ListSurvey";
+import SubmitSurvey from "./components/SubmitSurvey";
 
 const navWidthCollapsed = 64;
 const navWidthExpanded = 240;
 
 export class App extends Component {
+
+  componentDidMount() {
+    this.getSurveys();
+    this.getAnswers();
+  }
+
+  getSurveys = () => {
+    fetch("http://localhost:8080/survey")
+      .then((response) => response.json())
+      .then((data) => this.setState({ surveys: data }));
+  };
+  getAnswers = () => {
+    fetch("http://localhost:8080/answer")
+      .then((response) => response.json())
+      .then((data) => this.setState({ answers: data }));
+  };
+
   state = {
+    surveys: [],
+    answers: [],
     selected: "",
     expanded: false,
     error: null,
@@ -40,7 +46,6 @@ export class App extends Component {
 
   render() {
     const { expanded, selected } = this.state;
-
     return (
       <Router expanded={expanded}>
         <Route
@@ -67,7 +72,7 @@ export class App extends Component {
                         style={{ fontSize: "1.75em" }}
                       />
                     </NavIcon>
-                    <NavText>Home</NavText>
+                    <NavText>Submit</NavText>
                   </NavItem>
                   <NavItem eventKey="survey">
                     <NavIcon>
@@ -78,7 +83,7 @@ export class App extends Component {
                     </NavIcon>
                     <NavText>Surveys</NavText>
                   </NavItem>
-                  <NavItem eventKey="answer"> 
+                  <NavItem eventKey="answer">
                     <NavIcon>
                       <i
                         className="fa fa-fw fa-mail-reply"
@@ -96,19 +101,15 @@ export class App extends Component {
                   padding: "0 1rem",
                 }}
               >
-                <Route
-                  path="/"
-                  exact
-                  component={(props) => (
-                    <RootComponent />
-                  )}
-                />
-                <Route path="/survey">
-                  <Survey />
+              <Switch>
+                <Route exact path="/" component={SubmitSurvey}></Route>
+                <Route exact path="/survey" component={ListSurvey}>
+                  <ListSurvey surveys={this.state.surveys} />
                 </Route>
-                <Route path="/answer">
-                  <Answer />
+                <Route exact path="/answer" component={ListAnswer}>
+                  <ListAnswer answers={this.state.answers} />
                 </Route>
+              </Switch>
               </main>
             </Fragment>
           )}
@@ -116,10 +117,6 @@ export class App extends Component {
       </Router>
     );
   }
-}
-
-function Answer() {
-  return <h2 className="mt-3 title_head">Answer</h2>;
 }
 
 export default App;
