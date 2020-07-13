@@ -68,7 +68,7 @@ export class App extends Component {
                   <NavItem eventKey="">
                     <NavIcon>
                       <i
-                        className="fa fa-fw fa-home"
+                        className="fa fa-fw fa-list-alt"
                         style={{ fontSize: "1.75em" }}
                       />
                     </NavIcon>
@@ -77,7 +77,7 @@ export class App extends Component {
                   <NavItem eventKey="survey">
                     <NavIcon>
                       <i
-                        className="fa fa-fw fa-list-alt"
+                        className="fa fa-fw fa-list-ol"
                         style={{ fontSize: "1.75em" }}
                       />
                     </NavIcon>
@@ -86,7 +86,7 @@ export class App extends Component {
                   <NavItem eventKey="answer">
                     <NavIcon>
                       <i
-                        className="fa fa-fw fa-mail-reply"
+                        className="fa fa-fw fa-list-ul"
                         style={{ fontSize: "1.75em" }}
                       />
                     </NavIcon>
