@@ -68,3 +68,17 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+## ScreenShots
+
+**1. Home Page == Submit Survey Page**
+
+<img src="https://i.ibb.co/GtkXxLP/home-page.png">
+
+**2. Surveys List Page and Navigation Bar Collapsed**
+
+<img src="https://i.ibb.co/FH79CWr/List-surveys.png">
+
+**3. Answers List Page and Navigation Bar Expanded**
+
+<img src="https://i.ibb.co/DGWR4yC/List-answers.png">
